@@ -24,13 +24,15 @@ namespace GitFlowVS.Extension
         {
             try
             {
-                UpdateVisible();
                 Text = "GitFlow";
                 Image = Resources.LinkIcon;
-                IsVisible = true;
                 teamExplorer = GetService<ITeamExplorer>();
                 gitService = (IGitExt)serviceProvider.GetService(typeof(IGitExt));
-                teamExplorer.PropertyChanged += TeamExplorerOnPropertyChanged;
+                if (teamExplorer != null)
+                {
+                    teamExplorer.PropertyChanged += TeamExplorerOnPropertyChanged;
+                }
+                UpdateVisible();
             }
             catch (Exception ex)
             {
@@ -69,6 +71,10 @@ namespace GitFlowVS.Extension
 	        try
 	        {
 				Logger.PageView("Navigate");
+                if (teamExplorer == null)
+                {
+                    return;
+                }
 	        }
 	        catch (Exception ex)
 	        {

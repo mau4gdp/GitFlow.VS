@@ -32,7 +32,7 @@ namespace GitFlowVS.Extension
 
         public void UpdateVisibleState()
         {
-            IsVisible = !GitFlowPage.GitFlowIsInstalled || GitFlowPage.ActiveRepo == null;
+            IsVisible = GitFlowPage.IsEnvironmentReady && (!GitFlowPage.GitFlowIsInstalled || GitFlowPage.ActiveRepo == null);
         }
     }
 }
