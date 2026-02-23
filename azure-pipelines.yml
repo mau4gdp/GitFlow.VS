@@ -2,7 +2,7 @@ name: 1.5$(rev:.r).0
 resources:
 - repo: self
 pool:
-  vmImage: 'windows-2022'
+  vmImage: 'windows-2026'
 
 trigger:
 - master
@@ -27,6 +27,12 @@ steps:
     JsonPatchContent: '= /vsix:PackageManifest/vsix:Metadata/vsix:Identity/@Version=> "$(build.buildNumber)"'
     OutputPatchFile: true
     FailIfNoPatchApplied: true
+
+- task: UseDotNet@2
+  displayName: 'Use .NET 8'
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 4.4.1'
