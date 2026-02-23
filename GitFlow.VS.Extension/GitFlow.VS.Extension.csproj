@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
     <RootNamespace>GitFlowVS.Extension</RootNamespace>
     <AssemblyName>GitFlowVS.Extension</AssemblyName>
@@ -25,8 +25,10 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
     <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <VSSDKBuildToolsAutoSetup>true</VSSDKBuildToolsAutoSetup>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="Microsoft.TeamFoundation.Client">
       <HintPath>..\Dependencies\Microsoft.TeamFoundation.Client.dll</HintPath>
       <Private>False</Private>
@@ -42,7 +44,7 @@
       <HintPath>..\Dependencies\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <Reference Include="stdole">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
